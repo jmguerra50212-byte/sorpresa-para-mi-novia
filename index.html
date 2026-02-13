@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 Para Ti - 14 de Febrero | Roblox 💖</title>
+    <link rel="stylesheet" href="style.css.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Corazones flotantes de fondo -->
+        <div class="hearts-background"></div>
+        
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <div class="card" id="mainCard">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="heart-icon">💝</div>
+                        <h1 class="title">¡Hola Mi Amor! 💕</h1>
+                        <p class="subtitle">nuestro amor comenzo en roblox</p>
+                        <p class="subtitle-small">Toca el corazón para comenzar</p>
+                        <button class="start-btn" onclick="startExperience()">
+                            <span class="heart-btn">❤️</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mensajes que aparecen secuencialmente -->
+            <div class="message-container" id="messages">
+                <div class="message hidden" id="msg1">
+                    <h2>🎮 Nuestro Primer Encuentro 🎮</h2>
+                    <p>Todo comenzó en Roblox... el mejor juego que he jugado porque ahí te conocí 💖</p>
+                </div>
+                <div class="message hidden" id="msg2">
+                    <h2>✨ Eres Especial ✨</h2>
+                    <p>Cada día contigo es como ganar el mejor logro del juego</p>
+                </div>
+                <div class="message hidden" id="msg3">
+                    <h2>🌹 Mi Razón 🌹</h2>
+                    <p>Eres la razón por la que sonrío cada mañana, desde que te conocí en Roblox</p>
+                </div>
+                <div class="message hidden" id="msg4">
+                    <h2>💕 Te Amo 💕</h2>
+                    <p>Más de lo que las palabras pueden expresar... Gracias Roblox por traernos juntos</p>
+                </div>
+            </div>
+
+            <!-- Galería de recuerdos -->
+            <div class="gallery-container hidden" id="galleryContainer">
+                <h2>📸 Nuestros Momentos</h2>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">
+                        <p>💑</p>
+                        <p class="photo-hint">Puedes agregar tus fotos aquí</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto especial -->
+            <div class="photo-container hidden" id="photoContainer">
+                <div class="photo-wrapper">
+                    <img src="foto.jpg" alt="Mi Amor" class="special-photo" id="specialPhoto">
+                    <p class="photo-caption">La persona más hermosa y especial en mi vida🍓 💕</p>
+                </div>
+            </div>
+
+            <!-- Mensaje final -->
+            <div class="final-message hidden" id="finalMessage">
+                <h1>💝 Feliz Día de San Valentín Mi Amor💝</h1>
+                <p class="love-text">Gracias Roblox por traernos juntos 🎮💕</p>
+                <p class="love-text">Con todo mi amor,</p>
+                <p class="signature">Tu Costeñito ❤️</p>
+                <button class="restart-btn" onclick="location.reload()">Ver de Nuevo 🎮</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
