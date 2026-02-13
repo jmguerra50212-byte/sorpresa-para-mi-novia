@@ -1,0 +1,493 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Corazones flotantes de fondo */
+.hearts-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart-float {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.7;
+    animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Tarjeta principal */
+.card {
+    perspective: 1000px;
+    margin-bottom: 30px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card-front {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 60px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: cardEntrance 1s ease-out;
+}
+
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.heart-icon {
+    font-size: 80px;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    margin-bottom: 10px;
+}
+
+.roblox-icon {
+    font-size: 60px;
+    animation: robloxBounce 2s ease-in-out infinite;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+@keyframes robloxBounce {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg); 
+    }
+    25% { 
+        transform: translateY(-10px) rotate(-5deg); 
+    }
+    75% { 
+        transform: translateY(-10px) rotate(5deg); 
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.title {
+    font-size: 2.5em;
+    color: #d63384;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.subtitle-small {
+    font-size: 1em;
+    color: #999;
+    margin-bottom: 30px;
+}
+
+.start-btn {
+    background: linear-gradient(135deg, #f5576c, #f093fb);
+    border: none;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.start-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 40px rgba(245, 87, 108, 0.6);
+}
+
+.start-btn:active {
+    transform: scale(0.95);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+    }
+    50% {
+        box-shadow: 0 10px 40px rgba(245, 87, 108, 0.8);
+    }
+}
+
+.heart-btn {
+    font-size: 40px;
+    display: block;
+}
+
+/* Mensajes */
+.message-container {
+    margin-top: 30px;
+}
+
+.message {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 40px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: messageSlideIn 0.8s ease-out;
+}
+
+@keyframes messageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.message.hidden {
+    display: none;
+}
+
+.message h2 {
+    font-size: 2em;
+    color: #d63384;
+    margin-bottom: 15px;
+}
+
+.message p {
+    font-size: 1.3em;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Juego */
+.game-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: cardEntrance 0.8s ease-out;
+}
+
+.game-container.hidden {
+    display: none;
+}
+
+.game-container h2 {
+    color: #d63384;
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+.game-instructions {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.score {
+    font-size: 1.5em;
+    color: #d63384;
+    font-weight: bold;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #00a2ff, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.game-area {
+    min-height: 400px;
+    position: relative;
+    background: linear-gradient(135deg, #ffeef7 0%, #fff0f5 100%);
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 3px solid #ffb3d9;
+}
+
+.game-heart {
+    position: absolute;
+    font-size: 50px;
+    cursor: pointer;
+    animation: heartPop 0.5s ease-out;
+    transition: transform 0.2s;
+}
+
+.game-heart:hover {
+    transform: scale(1.2);
+}
+
+@keyframes heartPop {
+    from {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+.game-heart.clicked {
+    animation: heartExplode 0.5s ease-out forwards;
+}
+
+@keyframes heartExplode {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.restart-btn {
+    background: linear-gradient(135deg, #f5576c, #f093fb);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+    font-weight: bold;
+}
+
+.restart-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+}
+
+/* Foto especial */
+.photo-container {
+    margin-top: 30px;
+    animation: cardEntrance 1s ease-out;
+}
+
+.photo-container.hidden {
+    display: none;
+}
+
+.photo-wrapper {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.special-photo {
+    width: 100%;
+    max-width: 350px;
+    max-height: 450px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border: 5px solid #ffb3d9;
+    animation: photoZoom 1.2s ease-out;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+@keyframes photoZoom {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.photo-caption {
+    margin-top: 20px;
+    font-size: 1.3em;
+    color: #d63384;
+    font-weight: 600;
+    font-style: italic;
+}
+
+/* Galería */
+.gallery-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: cardEntrance 0.8s ease-out;
+    margin-top: 30px;
+}
+
+.gallery-container.hidden {
+    display: none;
+}
+
+.gallery-container h2 {
+    color: #d63384;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.photo-frame {
+    background: linear-gradient(135deg, #ffeef7 0%, #fff0f5 100%);
+    border-radius: 15px;
+    padding: 60px;
+    border: 3px solid #ffb3d9;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-placeholder {
+    text-align: center;
+}
+
+.photo-placeholder p:first-child {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.photo-hint {
+    color: #999;
+    font-size: 1.1em;
+}
+
+/* Mensaje final */
+.final-message {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 60px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: cardEntrance 1s ease-out;
+    margin-top: 30px;
+}
+
+.final-message.hidden {
+    display: none;
+}
+
+.final-message h1 {
+    font-size: 2.5em;
+    color: #d63384;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.love-text {
+    font-size: 1.5em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.signature {
+    font-size: 1.8em;
+    color: #d63384;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2em;
+    }
+    
+    .message h2 {
+        font-size: 1.5em;
+    }
+    
+    .message p {
+        font-size: 1.1em;
+    }
+    
+    .game-area {
+        min-height: 300px;
+    }
+    
+    .final-message h1 {
+        font-size: 2em;
+    }
+}
+
